@@ -9,6 +9,7 @@
     <RootNamespace>csudh</RootNamespace>
     <AssemblyName>csudh</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+	<Nullable>disable</Nullable>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
