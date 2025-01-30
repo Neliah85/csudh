@@ -27,19 +27,22 @@ public class DomainRecord
         return DomainSzint(this.DomainNev, szint);
     }
 
-   
+
     public static string DomainSzint(string domainnev, int szint)
     {
         var reszek = domainnev.Split('.');
+
+        // A legfelső szint az utolsó elem, ezért a számolás fordított
         if (szint >= 1 && szint <= reszek.Length)
         {
-            return string.Join(".", reszek.Skip(reszek.Length - szint));
+            return reszek[reszek.Length - szint]; // Az adott szintű elem visszaadása
         }
         else
         {
             return "nincs";
         }
     }
+
 
     public override string ToString()
     {
