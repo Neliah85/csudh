@@ -35,15 +35,15 @@ class Program
             if (domainLista.Count > 0)
             {
                 string elsoDomain = domainLista[0].DomainNev;
-                Console.WriteLine($"\nAz első domain felépítése:");
+                Console.WriteLine("\n5. feladat: Az első domain felépítése");
 
                 var reszek = elsoDomain.Split('.');
 
-                string szint1 = reszek.Length >= 1 ? reszek[reszek.Length - 1] : "nincs"; // Legfelső szint (edu)
-                string szint2 = reszek.Length >= 2 ? reszek[reszek.Length - 2] : "nincs"; // Második szint (csudh)
-                string szint3 = reszek.Length >= 3 ? reszek[reszek.Length - 3] : "nincs"; // Harmadik szint (gépnév)
-                string szint4 = reszek.Length >= 4 ? reszek[reszek.Length - 4] : "nincs"; // Negyedik szint
-                string szint5 = reszek.Length >= 5 ? reszek[reszek.Length - 5] : "nincs"; // Ötödik szint
+                string szint1 = reszek.Length >= 3 ? reszek[2] : "nincs"; // 1. szint = edu
+                string szint2 = reszek.Length >= 2 ? reszek[1] : "nincs"; // 2. szint = csudh
+                string szint3 = reszek.Length >= 1 ? reszek[0] : "nincs"; // 3. szint = szervernév
+                string szint4 = reszek.Length >= 4 ? reszek[3] : "nincs"; // 4. szint
+                string szint5 = reszek.Length >= 5 ? reszek[4] : "nincs"; // 5. szint
 
                 Console.WriteLine($"1. szint: {szint1}");
                 Console.WriteLine($"2. szint: {szint2}");
@@ -55,6 +55,7 @@ class Program
             {
                 Console.WriteLine("Nincs elérhető domain az adatbázisban.");
             }
+
 
 
             // 6. feladat: HTML táblázat mentése
@@ -81,12 +82,11 @@ class Program
                 {
                     var reszek = rekord.DomainNev.Split('.');
 
-                    // Ahelyett, hogy negatív indexeket használnánk, kézzel számoljuk a pozíciókat
-                    string szint1 = reszek.Length >= 1 ? reszek[reszek.Length - 1] : "nincs"; // Legfelső szint (edu)
-                    string szint2 = reszek.Length >= 2 ? reszek[reszek.Length - 2] : "nincs"; // Második szint (csudh)
-                    string szint3 = reszek.Length >= 3 ? reszek[reszek.Length - 3] : "nincs"; // Harmadik szint (gépnév)
-                    string szint4 = reszek.Length >= 4 ? reszek[reszek.Length - 4] : "nincs"; // Negyedik szint
-                    string szint5 = reszek.Length >= 5 ? reszek[reszek.Length - 5] : "nincs"; // Ötödik szint
+                    string szint1 = reszek.Length >= 3 ? reszek[2] : "nincs"; // 1. szint = edu
+                    string szint2 = reszek.Length >= 2 ? reszek[1] : "nincs"; // 2. szint = csudh
+                    string szint3 = reszek.Length >= 1 ? reszek[0] : "nincs"; // 3. szint = szervernév
+                    string szint4 = reszek.Length >= 4 ? reszek[3] : "nincs"; // 4. szint
+                    string szint5 = reszek.Length >= 5 ? reszek[4] : "nincs"; // 5. szint
 
                     sw.WriteLine(
                         $"<tr><td>{index}</td>" + // Sorszám
@@ -110,8 +110,6 @@ class Program
             Console.WriteLine("Hiba történt a HTML mentése közben: " + ex.Message);
         }
     }
-
-
 }
 
 
