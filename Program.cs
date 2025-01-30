@@ -116,7 +116,6 @@ class Program
             Console.WriteLine("Hiba történt a HTML mentése közben: " + ex.Message);
         }
     }
-
 }
 
 
