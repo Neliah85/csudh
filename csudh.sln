@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csudh", "csudh.csproj", "{C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTests", "..\DomainTest\DomainTests.csproj", "{281928DC-5DE4-420E-8B13-931FBDA693E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IpcimWPF", "..\IpcimWPF\IpcimWPF.csproj", "{4AD160E2-B987-495B-B75E-A740F78BEAA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{281928DC-5DE4-420E-8B13-931FBDA693E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{281928DC-5DE4-420E-8B13-931FBDA693E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{281928DC-5DE4-420E-8B13-931FBDA693E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AD160E2-B987-495B-B75E-A740F78BEAA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD160E2-B987-495B-B75E-A740F78BEAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD160E2-B987-495B-B75E-A740F78BEAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD160E2-B987-495B-B75E-A740F78BEAA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
