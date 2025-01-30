@@ -35,17 +35,27 @@ class Program
             if (domainLista.Count > 0)
             {
                 string elsoDomain = domainLista[0].DomainNev;
-                Console.WriteLine($"\nAz első domain: {elsoDomain}");
+                Console.WriteLine($"\nAz első domain felépítése:");
 
-                for (int i = 1; i <= 5; i++)
-                {
-                    Console.WriteLine($"{i}. szint: {DomainRecord.DomainSzint(elsoDomain, i)}");
-                }
+                var reszek = elsoDomain.Split('.');
+
+                string szint1 = reszek.Length >= 1 ? reszek[reszek.Length - 1] : "nincs"; // Legfelső szint (edu)
+                string szint2 = reszek.Length >= 2 ? reszek[reszek.Length - 2] : "nincs"; // Második szint (csudh)
+                string szint3 = reszek.Length >= 3 ? reszek[reszek.Length - 3] : "nincs"; // Harmadik szint (gépnév)
+                string szint4 = reszek.Length >= 4 ? reszek[reszek.Length - 4] : "nincs"; // Negyedik szint
+                string szint5 = reszek.Length >= 5 ? reszek[reszek.Length - 5] : "nincs"; // Ötödik szint
+
+                Console.WriteLine($"1. szint: {szint1}");
+                Console.WriteLine($"2. szint: {szint2}");
+                Console.WriteLine($"3. szint: {szint3}");
+                Console.WriteLine($"4. szint: {szint4}");
+                Console.WriteLine($"5. szint: {szint5}");
             }
             else
             {
                 Console.WriteLine("Nincs elérhető domain az adatbázisban.");
             }
+
 
             // 6. feladat: HTML táblázat mentése
             MentesHTML(domainLista, "table.html");
@@ -64,11 +74,31 @@ class Program
             using (StreamWriter sw = new StreamWriter(fajlnev))
             {
                 sw.WriteLine("<table border='1'>");
-                sw.WriteLine("<tr><th>Domain név</th><th>IP cím</th></tr>");
+                sw.WriteLine("<tr><th>Ssz</th><th>Host domainneve</th><th>Host IP címe</th><th>1. szint</th><th>2. szint</th><th>3. szint</th><th>4. szint</th><th>5. szint</th></tr>");
 
+                int index = 1;
                 foreach (var rekord in lista)
                 {
-                    sw.WriteLine($"<tr><td>{rekord.DomainNev}</td><td>{rekord.IpCim}</td></tr>");
+                    var reszek = rekord.DomainNev.Split('.');
+
+                    // Ahelyett, hogy negatív indexeket használnánk, kézzel számoljuk a pozíciókat
+                    string szint1 = reszek.Length >= 1 ? reszek[reszek.Length - 1] : "nincs"; // Legfelső szint (edu)
+                    string szint2 = reszek.Length >= 2 ? reszek[reszek.Length - 2] : "nincs"; // Második szint (csudh)
+                    string szint3 = reszek.Length >= 3 ? reszek[reszek.Length - 3] : "nincs"; // Harmadik szint (gépnév)
+                    string szint4 = reszek.Length >= 4 ? reszek[reszek.Length - 4] : "nincs"; // Negyedik szint
+                    string szint5 = reszek.Length >= 5 ? reszek[reszek.Length - 5] : "nincs"; // Ötödik szint
+
+                    sw.WriteLine(
+                        $"<tr><td>{index}</td>" + // Sorszám
+                        $"<td>{rekord.DomainNev}</td>" + // Domain név
+                        $"<td>{rekord.IpCim}</td>" + // IP-cím
+                        $"<td>{szint1}</td>" + // 1. szint (edu)
+                        $"<td>{szint2}</td>" + // 2. szint (csudh)
+                        $"<td>{szint3}</td>" + // 3. szint (gépnév)
+                        $"<td>{szint4}</td>" + // 4. szint (ha nincs, "nincs")
+                        $"<td>{szint5}</td></tr>"); // 5. szint (ha nincs, "nincs")
+
+                    index++;
                 }
 
                 sw.WriteLine("</table>");
@@ -80,4 +110,8 @@ class Program
             Console.WriteLine("Hiba történt a HTML mentése közben: " + ex.Message);
         }
     }
+
+
 }
+
+
