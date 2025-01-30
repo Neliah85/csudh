@@ -26,7 +26,8 @@ public class DomainRecord
     {
         return DomainSzint(this.DomainNev, szint);
     }
-        
+
+   
     public static string DomainSzint(string domainnev, int szint)
     {
         var reszek = domainnev.Split('.');
