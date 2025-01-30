@@ -39,11 +39,15 @@ class Program
 
                 var reszek = elsoDomain.Split('.');
 
-                string szint1 = reszek.Length >= 3 ? reszek[2] : "nincs"; // 1. szint = edu
-                string szint2 = reszek.Length >= 2 ? reszek[1] : "nincs"; // 2. szint = csudh
-                string szint3 = reszek.Length >= 1 ? reszek[0] : "nincs"; // 3. szint = szervernév
-                string szint4 = reszek.Length >= 4 ? reszek[3] : "nincs"; // 4. szint
-                string szint5 = reszek.Length >= 5 ? reszek[4] : "nincs"; // 5. szint
+                // A legfelső szint (edu) mindig az utolsó elem
+                string szint1 = reszek.Length >= 3 ? reszek[reszek.Length - 1] : "nincs";
+                // A második szint (csudh) az utolsó előtti
+                string szint2 = reszek.Length >= 3 ? reszek[reszek.Length - 2] : "nincs";
+                // A harmadik szint a legelső elem (szervernév)
+                string szint3 = reszek.Length >= 3 ? reszek[0] : "nincs";
+                // Ha van negyedik szint, azt is kezeljük
+                string szint4 = reszek.Length >= 4 ? reszek[1] : "nincs";
+                string szint5 = reszek.Length >= 5 ? reszek[2] : "nincs";
 
                 Console.WriteLine($"1. szint: {szint1}");
                 Console.WriteLine($"2. szint: {szint2}");
@@ -55,6 +59,7 @@ class Program
             {
                 Console.WriteLine("Nincs elérhető domain az adatbázisban.");
             }
+
 
 
 
@@ -82,11 +87,12 @@ class Program
                 {
                     var reszek = rekord.DomainNev.Split('.');
 
-                    string szint1 = reszek.Length >= 3 ? reszek[2] : "nincs"; // 1. szint = edu
-                    string szint2 = reszek.Length >= 2 ? reszek[1] : "nincs"; // 2. szint = csudh
-                    string szint3 = reszek.Length >= 1 ? reszek[0] : "nincs"; // 3. szint = szervernév
-                    string szint4 = reszek.Length >= 4 ? reszek[3] : "nincs"; // 4. szint
-                    string szint5 = reszek.Length >= 5 ? reszek[4] : "nincs"; // 5. szint
+                    // Szintek megfelelő visszafejtése
+                    string szint1 = reszek.Length >= 3 ? reszek[reszek.Length - 1] : "nincs";
+                    string szint2 = reszek.Length >= 3 ? reszek[reszek.Length - 2] : "nincs";
+                    string szint3 = reszek.Length >= 3 ? reszek[0] : "nincs";
+                    string szint4 = reszek.Length >= 4 ? reszek[1] : "nincs";
+                    string szint5 = reszek.Length >= 5 ? reszek[2] : "nincs";
 
                     sw.WriteLine(
                         $"<tr><td>{index}</td>" + // Sorszám
@@ -94,9 +100,9 @@ class Program
                         $"<td>{rekord.IpCim}</td>" + // IP-cím
                         $"<td>{szint1}</td>" + // 1. szint (edu)
                         $"<td>{szint2}</td>" + // 2. szint (csudh)
-                        $"<td>{szint3}</td>" + // 3. szint (gépnév)
-                        $"<td>{szint4}</td>" + // 4. szint (ha nincs, "nincs")
-                        $"<td>{szint5}</td></tr>"); // 5. szint (ha nincs, "nincs")
+                        $"<td>{szint3}</td>" + // 3. szint (szervernév)
+                        $"<td>{szint4}</td>" + // 4. szint (ha van)
+                        $"<td>{szint5}</td></tr>"); // 5. szint (ha van)
 
                     index++;
                 }
@@ -110,6 +116,8 @@ class Program
             Console.WriteLine("Hiba történt a HTML mentése közben: " + ex.Message);
         }
     }
+
 }
+
 
 
